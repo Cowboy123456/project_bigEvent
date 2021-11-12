@@ -51,7 +51,7 @@ $(function () {
         e.preventDefault();
         $.ajax({
             method: 'post',
-            url: 'http://api-breakingnews-web.itheima.net/api/reguser',
+            url: 'api/reguser',
             data: {
                 username: $('#reg_uname').val(),
                 password: $('#reg_psw').val()
@@ -94,7 +94,12 @@ $(function () {
             }
         )
     })
-    // ！！！！！ 到此时登录和注册页面的交互功能就设置完成了，此时不要忘记将修改后的文件提交到git仓库
+
+    // ！！！！！ 到此时登录和注册页面的交互功能就设置完成了，此时不要忘记将修改后的文件提交到git仓库，并将login分支推送到远程仓库，再将login分支合并到main主分支上，到此整个登录和注册页面算是完成了
+    // !!!!!!!!! 接下来该开发首页功能了，首先要做的是在git终端中创建index分支，并切换到index分支上，准备开发index页面，先搭建结构实现样式，再进行交互的实现
+
+    
+    
 
 
 

@@ -1,0 +1,57 @@
+.layui-footer {
+    position: fixed;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 15px;
+    background-color: #eee;
+    text-align: center;
+    font-size: 12px;
+}
+
+.icon-tuichu {
+    margin-right: 3px;
+}
+
+.layui-icon {
+    margin-left: 20px;
+    margin-right: 3px;
+}
+
+/* 左侧导航栏对应的iframe */
+.layui-body {
+    overflow: hidden;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* 左侧导航头像 */
+.user_avatar {
+    line-height: 60px;
+    width: 200px;
+    text-align: center;
+    font-size: 12px;
+    user-select: none;
+}
+
+.layui-side-scroll .user_avatar {
+    border-bottom: 1px solid #23262e;
+}
+/* 文本头像的样式 */
+.text_avatar {
+    display: inline-block;
+    position: relative;
+    top: 1px; 
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    background-color: #009688;
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+}

@@ -7,8 +7,38 @@ $.ajaxPrefilter(function (options) {
 
     // console.log(options.url);
 
-    // 在发起真正的ajax请求之前，统一拼接请求的路径
+    // 1.在发起真正的ajax请求之前，统一拼接请求的路径
     options.url = 'http://api-breakingnews-web.itheima.net/' + options.url
 
     // console.log(options.url);  // 重新拼接之后的options.url就是我们需要的完整的请求路径了
+
+    // 2. 统一为有访问权限的请求设置请求头headers属性
+     //判断，如果在请求路径中，该字符串'/my/'的indexOf值不为-1，说明在请求路径中存在该字符串，此时才给ajax请求设置请求头，否则不需要设置请求头，因为接口文档中告诉我们只有接口中有/my/的为有请求权限接口
+    if (options.url.indexOf('/my/') !== -1) { 
+        options.headers = {
+             // 访问有权限的接口时，必须请求的配置中添加headers请求头属性，并设置其中的Authorizations属性，其属性值在用户注册或登录的时候已发起ajax请求就会存储到本地存储，此时我们只需将其从本地取出即可
+            Authorization: localStorage.getItem('token') || ''
+        }  
+    }
+
+    // 3、全局统一挂载complte函数
+    
+    // 此时我们可以用ajax请求配置的属性complete函数，这个函数无论请求成功还是失败都会执行
+    options.complete =  function (res) {
+        console.log(res);  // 在complete回调函数中的responseJSON属性可以拿到获取数据失败的后服务器返回来的数据，我们可以基于这些数据进行判断
+        if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
+            // 做两件事
+            // 1.强制清空token
+            localStorage.removeItem('token');
+            // 2.强制停留在login页面
+            location.href = './login.html';   
+        }
+      
+        
+    }
+    
+
+        
+       
+    
 }) 
