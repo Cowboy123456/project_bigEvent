@@ -25,7 +25,7 @@ $.ajaxPrefilter(function (options) {
     
     // 此时我们可以用ajax请求配置的属性complete函数，这个函数无论请求成功还是失败都会执行
     options.complete =  function (res) {
-        console.log(res);  // 在complete回调函数中的responseJSON属性可以拿到获取数据失败的后服务器返回来的数据，我们可以基于这些数据进行判断
+        // console.log(res);  // 在complete回调函数中的responseJSON属性可以拿到获取数据失败的后服务器返回来的数据，我们可以基于这些数据进行判断
         if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
             // 做两件事
             // 1.强制清空token
